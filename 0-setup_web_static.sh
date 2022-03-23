@@ -28,5 +28,5 @@ else
 fi
 sudo chown -R ubuntu:ubuntu /data/
 sudo chmod 777 /etc/nginx/sites-available/default
-sudo sed -i "s/location \/ {/location \/hbnb_static\/ {\n\t\talias \/data\/web_static\/current\/;/" /etc/nginx/sites-available/default
+sudo sed -i "0,/location \/ {/s/location \/ {/location \/hbnb_static\/ {\n\t\talias \/data\/web_static\/current\/;/" /etc/nginx/sites-available/default
 sudo service nginx restart
