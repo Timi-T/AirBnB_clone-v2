@@ -50,7 +50,7 @@ def do_pack():
         return file_path
 
 def deploy():
-    """fully compress and deploy"""
+    """fully compress folder and deploy"""
 
     compress = do_pack():
     if not compress:
