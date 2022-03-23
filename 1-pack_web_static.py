@@ -3,9 +3,9 @@
 fabfile to create an archive
 """
 
+from __future__ import with_statement
 from fabric.api import local, settings
 from datetime import datetime
-from __future__ import with_statement
 
 
 def do_pack():
