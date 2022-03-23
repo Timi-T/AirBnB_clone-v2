@@ -6,6 +6,7 @@ compress and deploy web_static
 from __future__ import with_statement
 from fabric.api import local, run, put, env, settings
 from os import path
+from datetime import datetime
 
 
 env.user = 'ubuntu'
