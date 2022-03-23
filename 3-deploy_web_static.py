@@ -32,6 +32,7 @@ def do_deploy(archive_path):
     run('sudo rm -rf /data/web_static/current')
     run('sudo ln -s {} /data/web_static/current'.format(unzip_path))
 
+
 def do_pack():
     """function to compress a directory"""
 
@@ -49,10 +50,11 @@ def do_pack():
     else:
         return file_path
 
+
 def deploy():
     """fully compress folder and deploy"""
 
-    compress = do_pack():
+    compress = do_pack()
     if not compress:
         return False
     deploy = do_deploy(file_path)
