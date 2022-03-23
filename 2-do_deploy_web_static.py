@@ -23,36 +23,11 @@ def do_deploy(archive_path):
     arc_file = arc_file[len(arc_file) - 1]
     folder_name = (arc_file.split('.'))[0]
     unzip_path = '/data/web_static/releases/{}'.format(folder_name)
-    with settings(warn_only=True):
-        res = put(archive_path, '/tmp/')
-    if res.failed:
-        return False
-    with settings(warn_only=True):
-        res = run('sudo mkdir -p {}'.format(unzip_path))
-    if res.failed:
-        return False
-    with settings(warn_only=True):
-        res = run('sudo tar -zxf /tmp/{} -C {}'.format(arc_file, unzip_path))
-    if res.failed:
-        return False
-    with settings(warn_only=True):
-        res = run('sudo mv {}/web_static/* {}'.format(unzip_path, unzip_path))
-    if res.failed:
-        return False
-    with settings(warn_only=True):
-        res = run('sudo rm -rf {}/web_static'.format(unzip_path))
-    if res.failed:
-        return False
-    with settings(warn_only=True):
-        res = run('sudo rm /tmp/{}'.format(arc_file))
-    if res.failed:
-        return False
-    with settings(warn_only=True):
-        res = run('sudo rm -rf /data/web_static/current')
-    if res.failed:
-        return False
-    with settings(warn_only=True):
-        res = run('sudo ln -s {} /data/web_static/current'.format(unzip_path))
-    if res.failed:
-        return False
-    return True
+    res = put(archive_path, '/tmp/')
+    res = run('sudo mkdir -p {}'.format(unzip_path))
+    res = run('sudo tar -zxf /tmp/{} -C {}'.format(arc_file, unzip_path))
+    res = run('sudo mv {}/web_static/* {}'.format(unzip_path, unzip_path))
+    res = run('sudo rm -rf {}/web_static'.format(unzip_path))
+    res = run('sudo rm /tmp/{}'.format(arc_file))
+    res = run('sudo rm -rf /data/web_static/current')
+    res = run('sudo ln -s {} /data/web_static/current'.format(unzip_path))
