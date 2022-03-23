@@ -58,5 +58,5 @@ def deploy():
     compress = do_pack()
     if not compress:
         return False
-    deploy = do_deploy(file_path)
+    deploy = do_deploy(compress)
     return deploy
