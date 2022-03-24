@@ -14,7 +14,6 @@ env.user = 'ubuntu'
 env.hosts = ['34.148.87.245', '3.231.218.82']
 
 
-
 def do_deploy(archive_path):
     """function to use fabric to deploy a directory"""
 
