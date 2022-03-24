@@ -17,8 +17,7 @@ def do_clean(number=0):
     number = int(number)
     if number == 0:
         number += 1
-    number +=1
-    num_str = str(number + 1)
-    arc_path = '/data/web_static/releases'
-    local('ls versions -t | tail -n +{} | xargs rm --'.format(num_str))
-    run('ls {} -t | tail -n +{} | xargs rm --'.format(arc_path, num_str))
+    num = str(number)
+    path = '/data/web_static/releases'
+    run('realpath {}/* | head -n -{} | xargs sudo rm -rf --'.format(path, num))
+    local('realpath versions/* | head -n -{} | xargs rm -rf --'.format(num))
