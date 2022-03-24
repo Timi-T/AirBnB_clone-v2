@@ -5,7 +5,7 @@ remove old archives from deployment
 
 
 from __future__ import with_statement
-from fabric.api import local, run, put, env, settings
+from fabric.api import local, run, put, env, settings, sudo
 from os import path
 from datetime import datetime
 
@@ -71,5 +71,5 @@ def do_clean(number=0):
         number += 1
     num = str(number)
     path = '/data/web_static/releases'
-    run('realpath {}/* | head -n -{} | xargs sudo rm -rf --'.format(path, num))
+    sudo('realpath {}/* | head -n -{} | xargs rm -rf --'.format(path, num))
     local('realpath versions/* | head -n -{} | xargs rm -rf --'.format(num))
