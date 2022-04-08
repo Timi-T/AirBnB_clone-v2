@@ -43,7 +43,7 @@ def cities_in_state(id):
             ct_dict = {}
             for k, v in cities.items():
                 ct_key = v.id
-                ct_val = v.name
+                ct_val = v.created_at
                 ct_dict[ct_key] = ct_val
         else:
             cities = state.cities
