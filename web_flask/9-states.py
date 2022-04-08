@@ -40,18 +40,13 @@ def cities_in_state(id):
     if found == 1:
         if os.getenv('HBNB_TYPE_STORAGE') != 'db':
             cities = state.cities()
-            ct_dict = {}
-            for k, v in cities.items():
-                ct_key = v.id
-                ct_val = v.created_at
-                ct_dict[ct_key] = ct_val
         else:
             cities = state.cities
-            ct_dict = {}
-            for city in cities:
-                ct_key = city.id
-                ct_val = city.name
-                ct_dict[ct_key] = ct_val
+        ct_dict = {}
+        for city in cities:
+            ct_key = city.id
+            ct_val = city.name
+            ct_dict[ct_key] = ct_val
         ct_array = sorted(ct_dict.items(), key=lambda x: x[1])
         return render_template("9-states.html", cities=ct_array, state=st_name)
     return render_template("9-states.html", not_found='Not found!')
