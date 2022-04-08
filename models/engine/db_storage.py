@@ -51,7 +51,6 @@ class DBStorage():
             objs = session.query(cls)
             for each_obj in objs:
                 if each_obj:
-                    #dictionary += each_obj.to_dict()
                     key = each_obj.__class__.__name__ + '.' + each_obj.id
                     value = each_obj
                     dictionary[key] = value
