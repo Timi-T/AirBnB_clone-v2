@@ -7,7 +7,6 @@ Start airbnb web application with flask
 from flask import Flask, render_template
 from models import storage
 from models.state import State
-import os
 
 
 app = Flask(__name__)
@@ -27,10 +26,7 @@ def cities_in_state(id=None):
                 found = 1
                 break
         if found == 1:
-            if os.getenv('HBNB_TYPE_STORAGE') != 'db':
-                cities = state.cities()
-            else:
-                cities = state.cities
+            cities = state.cities
             ct_dict = {}
             for city in cities:
                 ct_key = city.id
