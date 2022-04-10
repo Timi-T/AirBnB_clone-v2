@@ -29,9 +29,9 @@ article {
 	display: flex;
 	flex-direction: row;
 	position: relative;
-
-	height: 80px;	
+	height: auto;
 	width: 100%;
+	z-index: -1;
 }
 
 .price_by_night {
@@ -39,7 +39,7 @@ article {
 	justify-content: center;
 	align-self: flex-end;
 
-	position: absolute;
+	position: relative;
 	right: 0;
 
 	line-height: 60px;
@@ -75,7 +75,7 @@ article {
 
 .user {
 	margin-top: 5px;
-	margin-bottom: 5px;	
+	margin-bottom: 5px;
 }
 
 .description {
@@ -93,7 +93,7 @@ h1 {
 	font-size: 30px;
 }
 
-article h2 {
+h2 {
 	font-size: 30px;
 	margin: 10px auto;
 	padding: 0px;
@@ -113,8 +113,8 @@ article h2 {
 	background-image: url("../images/icon_bed.png");
 	background-repeat: no-repeat;
 	background-position: center;
-    width: 50px;
-    height: 50px;
+	width: 50px;
+	height: 50px;
 }
 
 .bath_icon {
@@ -122,6 +122,7 @@ article h2 {
 	background-image: url("../images/icon_bath.png");
 	background-repeat: no-repeat;
 	background-position: center;
-    width: 50px;
-    height: 50px;
+	width: 50px;
+	height: 50px;
 }
+
