@@ -4,7 +4,7 @@
         <TITLE>AirBnB clone</TITLE>
         <LINK rel="shortcut icon" href="../static/images/icon.ico" >
         <LINK rel="stylesheet" href="../static/styles/4-common.css"/>
-        <LINK rel="stylesheet" href="../staticstyles/3-header.css"/>
+        <LINK rel="stylesheet" href="../static/styles/3-header.css"/>
         <LINK rel="stylesheet" href="../static/styles/3-footer.css"/>
         <LINK rel="stylesheet" href="../static/styles/6-filters.css"/>
         <LINK rel="stylesheet" href="../static/styles/8-places.css"/>
@@ -43,24 +43,24 @@
             </SECTION>
             <SECTION class="places">
                 <H1>Places</H1>
+                {% for place in places|sort(attribute='name') %}
                 <ARTICLE>
-                {% for place in places %}
                     <DIV class="headline">
                         <H2>{{ place.name }}</H2>
-                        <DIV class="price_by_night">{{ place.price_by_night }}</DIV>
+                        <DIV class="price_by_night">${{ place.price_by_night }}</DIV>
                     </DIV>
                     <DIV class="information">
                         <DIV class="max_guest">
                             <DIV class="guest_icon"></DIV>
-                            <P>{{ place.max_guest }}</P>
+                            <P>{{ place.max_guest }} Guest</P>
                         </DIV>
                         <DIV class="number_rooms">
                             <DIV class="bed_icon"></DIV>
-                            <P>{{ number_rooms }}</P>
+                            <P>{{ place.number_rooms }} Room</P>
                         </DIV>
                         <DIV class="number_bathrooms">
                             <DIV class="bath_icon"></DIV>
-                            <P>{{ number_bathrooms }}</P>
+                            <P>{{ place.number_bathrooms }} Bathroom</P>
                         </DIV>
                     </DIV>
                     <DIV class="user">
@@ -68,9 +68,9 @@
                         : {{ (place.user).first_name }}
                          {{ (place.user).last_name }}
                     </DIV>
-                    <DIV class="description">{{ place.description }}</DIV>
-                {% endfor %}
+                    <DIV class="description">{{ (place.description).replace('<BR /><BR />', '\n')|safe }}</DIV>
                 </ARTICLE>
+                {% endfor %}
             </SECTION>
         </DIV>
         <FOOTER>
